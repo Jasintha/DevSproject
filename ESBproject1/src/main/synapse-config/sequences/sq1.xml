@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="sq1">
+    <log/>
+    <property name="property_name" value="value" scope="default" type="STRING"/>
+    <call>
+        <endpoint>
+            <address uri="http://www.example.org/service"/>
+        </endpoint>
+    </call>
+    <enrich>
+        <source xpath="/default/xpath"/>
+        <target xpath="/default/xpath"/>
+    </enrich>
+    <smooks config-key="/default/key">
+        <input type="xml"/>
+        <output type="xml"/>
+    </smooks>
+</sequence>

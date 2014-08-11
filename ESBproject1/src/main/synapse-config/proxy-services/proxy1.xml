@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <proxy xmlns="http://ws.apache.org/ns/synapse" name="proxy1" transports="http https" startOnLoad="true" trace="disable">
-    <target>
-        <inSequence>
-            <call/>
-        </inSequence>
-        <outSequence/>
+    <target inSequence="">
+        <outSequence>
+            <sequence key="Sequence"/>
+            <switch source="/default/xpath">
+                <case regex=".*+">
+                    <header name="To" scope="default" value="header_value"/>
+                    <smooks config-key="/default/key">
+                        <input type="xml"/>
+                        <output type="xml"/>
+                    </smooks>
+                </case>
+                <default>
+                    <enrich>
+                        <source xpath="/default/xpath"/>
+                        <target xpath="/default/xpath"/>
+                    </enrich>
+                    <smooks config-key="/default/key">
+                        <input type="xml"/>
+                        <output type="xml"/>
+                    </smooks>
+                </default>
+            </switch>
+            <property name="property_name" value="value" scope="default" type="STRING"/>
+            <log/>
+        </outSequence>
         <faultSequence/>
     </target>
 </proxy>

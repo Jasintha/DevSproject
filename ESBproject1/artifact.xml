@@ -2,4 +2,7 @@
     <artifact name="proxy1" groupId="com.example.ESBproject1.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/proxy1.xml</file>
     </artifact>
+    <artifact name="sq1" groupId="com.example.ESBproject1.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/sq1.xml</file>
+    </artifact>
 </artifacts>
